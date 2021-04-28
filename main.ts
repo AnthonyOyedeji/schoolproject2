@@ -9,7 +9,7 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     state += 1
-    if (true) {
+    if (state == 1) {
         basic.showString("num2",100)
 basic.showNumber(number_2)
     } else if (state == 2) {
@@ -26,15 +26,38 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    go()
+    action += 1
+    if (action == 1) {
+        basic.showLeds(`
+            . . . . #
+            . . . # .
+            . . # . .
+            . # . . .
+            # . . . .
+            `)
+        basic.pause(100)
+        basic.clearScreen()
+    } else if (action == 2) {
+        basic.showLeds(`
+            # . . . #
+            . # . # .
+            . . # . .
+            . # . # .
+            # . . . #
+            `)
+        basic.pause(100)
+        basic.clearScreen()
+    }
 })
 function go () {
+    action = 0
     number_2 = 0
     number_1 = 0
     state = 0
     basic.showString("Enter num1",100)
 basic.showNumber(number_1)
 }
+let action = 0
 let number_2 = 0
 let number_1 = 0
 let state = 0
